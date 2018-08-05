@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="/assets/normalize.css">
+  <link rel="stylesheet" inline href="/assets/main.css">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
+  <title>{{.Name}}</title>
+</head>
+<body>
+
+  <div id="everything">
+  <header role="banner">
+             <b><a href="/">{{.Name}}</a></b>
+  </header>
+
+  <hr>
+
+  <main role="main" class="list">
+    {{ range .Posts }}
+    <article itemscope itemtype="http://schema.org/Blog">
+      {{with .Date}}
+        <span class="entry-meta col">
+          <time itemprop="datePublished" datetime="{{.Format "January 02, 2006"}}">
+            {{.Format "Jan 2006"}}
+          </time>
+        </span>
+      {{end}}
+      <a href="{{.RelativeLink}}">{{.Title}}</a>
+    </article>
+    {{ end }}
+  </main>
+
+  <hr>
+  <footer role="contentinfo">
+             <a href="https://github.com/daivinhtran/" target="_blank">github</a>
+    &middot; <a href="https://www.linkedin.com/in/vinhtran40/" target="_blank">linkedin</a>
+    <!-- &middot; <a href="https://daivinhtran.github.io/resume" target="_blank">resume</a> -->
+    &middot; <a href="/index.xml" target="_blank">rss</a>
+  </footer>
+
+  <hr>
+  <div>
+    Powered by <a target="_blank" href="https://github.com/siadat/blgo">blgo</a> engine
+  </div>
+  </div>
+
+</body>
+</html>

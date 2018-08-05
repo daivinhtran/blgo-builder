@@ -1,14 +1,14 @@
 package main
 
 import (
-	"fmt"
-
 	"blgo-builder/builder"
-	"blgo-builder/server"
+	"os"
+	"path"
 )
 
 func main() {
-	builder.Build()
-	server.Serve()
-	fmt.Println("Test")
+	cwd, _ := os.Getwd()
+	sourcePath := path.Join(cwd, "source")
+	outputPath := path.Join(cwd, "output")
+	builder.Build(sourcePath, outputPath)
 }
