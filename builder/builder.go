@@ -41,7 +41,7 @@ func Build(sourcePath string, outputPath string) {
 		var outputFile *os.File
 		if outputFile, err = os.Create(path.Join(outputPath, "posts", outputFilename)); err != nil {
 			log.Fatalln(err)
-			os.Exit(1)
+			return
 		}
 		defer outputFile.Close()
 
