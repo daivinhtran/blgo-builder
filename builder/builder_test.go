@@ -6,9 +6,9 @@ import (
 	"testing"
 )
 
-func TestStuff(t *testing.T) {
+func TestBuilder(t *testing.T) {
 	cwd, _ := os.Getwd()
-	sourcePath := path.Join(cwd, "source")
+	sourcePath := path.Join(cwd, "test_source")
 	outputPath := path.Join(cwd, "output")
 	Build(sourcePath, outputPath)
 }
