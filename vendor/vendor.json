@@ -1,0 +1,19 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "Ne3D+KJs1TU2trnDy1UCSwlXbAE=",
+			"path": "github.com/russross/blackfriday",
+			"revision": "11635eb403ff09dbc3a6b5a007ab5ab09151c229",
+			"revisionTime": "2018-04-28T10:25:19Z"
+		},
+		{
+			"checksumSHA1": "ZSWoOPUNRr5+3dhkLK3C4cZAQPk=",
+			"path": "gopkg.in/yaml.v2",
+			"revision": "5420a8b6744d3b0345ab293f6fcba19c978f1183",
+			"revisionTime": "2018-03-28T19:50:20Z"
+		}
+	],
+	"rootPath": "blgo-builder"
+}
