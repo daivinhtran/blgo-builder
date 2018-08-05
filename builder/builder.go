@@ -1,6 +1,7 @@
 package builder
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"os"
@@ -11,6 +12,12 @@ import (
 
 // Build builds html files from markdown files
 func Build(sourcePath string, outputPath string) {
+	index := &Index{}
+	if err := index.ReadMarkdown(filepath.Join(sourcePath, "index.md")); err != nil {
+		log.Fatalln(err)
+		return
+	}
+
 	// Create directory to store genereated posts
 	createDir(outputPath)
 	createDir(path.Join(outputPath, "posts"))
@@ -26,10 +33,6 @@ func Build(sourcePath string, outputPath string) {
 		path.Join(sourcePath, "templates", "post.tmpl.html"),
 	))
 	for _, filename := range files {
-		// ignore index file
-		if filepath.Base(filename) == "_index.md" {
-			continue
-		}
 
 		post := &Post{}
 		if err := post.ReadMarkdown(filename); err != nil {
@@ -43,12 +46,17 @@ func Build(sourcePath string, outputPath string) {
 			log.Fatalln(err)
 			return
 		}
+		fmt.Println(outputFile.Name())
 		defer outputFile.Close()
 
 		if tmpl.ExecuteTemplate(outputFile, "post.tmpl.html", post); err != nil {
 			log.Fatalln("Unable to execute template", err)
 		}
+
+		index.Posts = append(index.Posts, post)
 	}
+
+	fmt.Println(index)
 }
 
 func filesInDir(dirName string, pattern string) ([]string, error) {
