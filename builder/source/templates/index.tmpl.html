@@ -7,20 +7,19 @@
   <link rel="stylesheet" inline href="/assets/normalize.css">
   <link rel="stylesheet" inline href="/assets/main.css">
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
-  <title>{{.Title}}</title>
+  <title>{{.Name}}</title>
 </head>
 <body>
 
   <div id="everything">
   <header role="banner">
-             <b><a href="/">{{.Title}}</a></b>
+             <b><a href="/">{{.Name}}</a></b>
   </header>
 
   <hr>
 
   <main role="main" class="list">
     {{ range .Posts }}
-    {{ if not .Draft }}
     <article itemscope itemtype="http://schema.org/Blog">
       {{with .Date}}
         <span class="entry-meta col">
@@ -31,7 +30,6 @@
       {{end}}
       <a href="{{.RelativeLink}}">{{.Title}}</a>
     </article>
-    {{ end }}
     {{ end }}
   </main>
 

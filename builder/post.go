@@ -19,8 +19,8 @@ type Post struct {
 	// Description    string
 	// GUID           string
 	// Link           string
-	// RelativeLink   string
-	Title string
+	RelativeLink string
+	Title        string
 	// XMLDesc        string
 	// XMLTitle       string
 	// Draft          bool

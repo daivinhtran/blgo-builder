@@ -11,8 +11,12 @@ type Index struct {
 	Posts []*Post
 }
 
+func (index *Index) Len() int           { return len(index.Posts) }
+func (index *Index) Swap(i, j int)      { index.Posts[i], index.Posts[j] = index.Posts[j], index.Posts[i] }
+func (index *Index) Less(i, j int) bool { return index.Posts[i].Date.Before(index.Posts[j].Date) }
+
 // ReadMarkdown reads markdown file to update the receiver index
-func (i *Index) ReadMarkdown(filename string) error {
+func (index *Index) ReadMarkdown(filename string) error {
 	markdownBytes, err := ioutil.ReadFile(filename)
 	if err != nil {
 		return err
@@ -24,7 +28,7 @@ func (i *Index) ReadMarkdown(filename string) error {
 	}
 
 	if name, ok := frontMatter["name"]; ok {
-		i.Name = name.(string)
+		index.Name = name.(string)
 	} else {
 		return fmt.Errorf("could not read the name from %v", filename)
 	}

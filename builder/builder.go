@@ -7,6 +7,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"sort"
 	"strings"
 )
 
@@ -31,7 +32,10 @@ func Build(sourcePath string, outputPath string) {
 
 	tmpl := template.Must(template.ParseFiles(
 		path.Join(sourcePath, "templates", "post.tmpl.html"),
+		path.Join(sourcePath, "templates", "index.tmpl.html"),
 	))
+	var outputFile *os.File
+
 	for _, filename := range files {
 
 		post := &Post{}
@@ -41,12 +45,10 @@ func Build(sourcePath string, outputPath string) {
 		}
 
 		outputFilename := strings.TrimSuffix(filepath.Base(filename), ".md") + ".html"
-		var outputFile *os.File
 		if outputFile, err = os.Create(path.Join(outputPath, "posts", outputFilename)); err != nil {
 			log.Fatalln(err)
 			return
 		}
-		fmt.Println(outputFile.Name())
 		defer outputFile.Close()
 
 		if tmpl.ExecuteTemplate(outputFile, "post.tmpl.html", post); err != nil {
@@ -54,6 +56,15 @@ func Build(sourcePath string, outputPath string) {
 		}
 
 		index.Posts = append(index.Posts, post)
+	}
+
+	sort.Sort(sort.Reverse(index))
+
+	if outputFile, err = os.Create(path.Join(outputPath, "index.html")); err != nil {
+		log.Fatalln(err)
+	}
+	if err := tmpl.ExecuteTemplate(outputFile, "index.tmpl.html", index); err != nil {
+		log.Fatalln(err)
 	}
 
 	fmt.Println(index)
