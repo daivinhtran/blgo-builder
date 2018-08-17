@@ -1,7 +1,6 @@
 package builder
 
 import (
-	"fmt"
 	"html/template"
 	"log"
 	"os"
@@ -9,6 +8,8 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+
+	"github.com/otiai10/copy"
 )
 
 // Build builds html files from markdown files
@@ -67,7 +68,8 @@ func Build(sourcePath string, outputPath string) {
 		log.Fatalln(err)
 	}
 
-	fmt.Println(index)
+	// copy assets
+	copy.Copy(path.Join(sourcePath, "assets"), path.Join(outputPath, "assets"))
 }
 
 func filesInDir(dirName string, pattern string) ([]string, error) {

@@ -3,6 +3,12 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "dz5LSabGKgP136+7CKWYMkKYT2k=",
+			"path": "github.com/otiai10/copy",
+			"revision": "7e9a647135a142c2669943d4a4d29be015ce9392",
+			"revisionTime": "2018-08-13T03:28:24Z"
+		},
+		{
 			"checksumSHA1": "Ne3D+KJs1TU2trnDy1UCSwlXbAE=",
 			"path": "github.com/russross/blackfriday",
 			"revision": "11635eb403ff09dbc3a6b5a007ab5ab09151c229",
