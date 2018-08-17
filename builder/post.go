@@ -13,10 +13,11 @@ import (
 
 // Post represents a single blog post
 type Post struct {
-	Body         template.HTML
-	Date         time.Time
-	RelativeLink string
-	Title        string
+	Body          template.HTML
+	Date          time.Time
+	RelativeLink  string
+	CanonicalLink string
+	Title         string
 }
 
 // ReadMarkdown reads markdown file to update the receiver post
@@ -47,6 +48,10 @@ func (p *Post) ReadMarkdown(filename string) error {
 
 	p.Body = template.HTML(blackfriday.MarkdownCommon([]byte(markdownBytes)))
 	p.RelativeLink = "/posts/" + strings.TrimSuffix(filepath.Base(filename), ".md") + ".html"
+
+	if canonicalLink, ok := frontMatter["canonical"]; ok {
+		p.CanonicalLink = canonicalLink.(string)
+	}
 
 	return nil
 }
