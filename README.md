@@ -14,10 +14,13 @@ I once found [blgo](https://github.com/siadat/blgo) and decided to rearchitect t
 ### Requirements
 For development, you will only need [Go](https://golang.org/dl/) installed on your environment.
 
+Make sure to [GOPATH](https://github.com/golang/go/wiki/SettingGOPATH) is set in your environment.
+
 
 ### Install
 
 ```
+$ cd $GOPATH/src
 $ git clone https://github.com/daivinhtran/blgo-builder.git
 $ go run main.go
 ```
