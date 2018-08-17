@@ -8,6 +8,6 @@ import (
 
 func TestBuilder(t *testing.T) {
 	cwd, _ := os.Getwd()
-	outputPath := path.Join(cwd, "test_output")
+	outputPath := path.Join(cwd, "output")
 	Serve(outputPath, "8080")
 }
