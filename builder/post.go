@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"html/template"
 	"io/ioutil"
+	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/russross/blackfriday"
@@ -18,7 +20,7 @@ type Post struct {
 	Date time.Time
 	// Description    string
 	// GUID           string
-	// Link           string
+	// Link string
 	RelativeLink string
 	Title        string
 	// XMLDesc        string
@@ -53,5 +55,7 @@ func (p *Post) ReadMarkdown(filename string) error {
 	}
 
 	p.Body = template.HTML(blackfriday.MarkdownCommon([]byte(markdownBytes)))
+	p.RelativeLink = "/posts/" + strings.TrimSuffix(filepath.Base(filename), ".md") + ".html"
+
 	return nil
 }
