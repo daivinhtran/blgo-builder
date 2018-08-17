@@ -8,7 +8,7 @@ I once found [blgo](https://github.com/siadat/blgo) and decided to rearchitect t
 
 ### Flow Diagram
 
-![flow diagram](https://github.com/daivinhtran/blgo-builder/blob/master/flow_diagram.png)
+![flow diagram](https://github.com/daivinhtran/blgo-builder/blob/master/flow_diagram.jpg)
 
 
 ### Requirements
