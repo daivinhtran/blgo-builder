@@ -13,19 +13,10 @@ import (
 
 // Post represents a single blog post
 type Post struct {
-	// Index          *Index
-	// Slug           string
-	// OutputFilename string
-	Body template.HTML
-	Date time.Time
-	// Description    string
-	// GUID           string
-	// Link string
+	Body         template.HTML
+	Date         time.Time
 	RelativeLink string
 	Title        string
-	// XMLDesc        string
-	// XMLTitle       string
-	// Draft          bool
 }
 
 // ReadMarkdown reads markdown file to update the receiver post
