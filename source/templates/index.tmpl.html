@@ -28,7 +28,11 @@
           </time>
         </span>
       {{end}}
-      <a href="{{.RelativeLink}}">{{.Title}}</a>
+      {{if .CanonicalLink}}
+        <a href="{{.CanonicalLink}}">{{.Title}}</a>
+      {{else}}
+        <a href="{{.RelativeLink}}">{{.Title}}</a>
+      {{end}}
     </article>
     {{ end }}
   </main>
@@ -42,7 +46,7 @@
 
   <hr>
   <div>
-    Powered by <a target="_blank" href="https://github.com/daivinhtran/blgo_builder">blgo_builder</a>
+    Powered by <a target="_blank" href="https://github.com/daivinhtran/blgo-builder">blgo-builder</a>
   </div>
   </div>
 
